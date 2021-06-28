@@ -1,14 +1,17 @@
 const http = require("http");
 
-const randomInteger = (max) => Math.floor(Math.random() * max + 1);
-const randomIntegerWithDecimals = (max) => Math.random() * max ;
-
+const randomInteger = (max, min) => {
+    return min > 0 ? 
+    Math.floor(Math.random() * (max - min)) + min 
+    : 
+    Math.random() * (max - min) + min
+}
 const server = http.createServer( (req, res) => { 
     res.write( JSON.stringify({
-        id: randomInteger(10),
-        title: `Producto ${randomInteger(10)}`,
-        price: randomIntegerWithDecimals(10000).toFixed(2),
-        thumbnail: `Foto ${randomInteger(10)}`
+        id: randomInteger(11,1),
+        title: `Producto ${randomInteger(11,1)}`,
+        price: randomInteger(10001, 0).toFixed(2),
+        thumbnail: `Foto ${randomInteger(11,1)}`
     })
     )
     res.end()
