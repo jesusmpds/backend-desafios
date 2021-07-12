@@ -47,3 +47,5 @@ archivoProductos.guardar("Escuadra",123.45,"https://cdn3.iconfinder.com/data/ico
 archivoProductos.guardar("Calculadora",234.56,"https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png")
 
 archivoProductos.guardar("Globo Terráqueo",345.67,"https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png")
+
+archivoProductos.leer()
