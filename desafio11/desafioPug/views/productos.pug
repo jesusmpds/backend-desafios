@@ -1,0 +1,17 @@
+.container
+  h1.row Vista de Productos
+  if listaDeProductos
+    .table-responsive
+        table.table.table-dark
+            tr
+                th Nombre
+                th Precio
+                th Foto
+            each producto in listaDeProductos
+                tr
+                    td= producto.title
+                    td= producto.price
+                    td
+                        img(width='50' src=producto.thumbnail alt='not found')
+  else  
+  h3.alert.alert-warning No se encontraron productos
