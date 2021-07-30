@@ -1,8 +1,7 @@
-let productosdb = [];
 
 class Producto {
-    constructor(productos){
-        this.productos = productos;
+    constructor(){
+        this.productos = [];
     }
 
     guardar(title,price,thumbnail){
@@ -22,5 +21,5 @@ class Producto {
 
 }
 
-let productos = new Producto(productosdb)
+let productos = new Producto()
 module.exports = productos;

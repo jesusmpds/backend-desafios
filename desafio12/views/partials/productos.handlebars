@@ -1,0 +1,24 @@
+{{>crearProductos}}
+<section class="pt-4">
+    <div class="container">
+        <h1 class="row">Vista de Productos</h1>
+        <div class="table-responsive">
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Foto</th>
+                    </tr>
+                </thead>
+                <tbody id="productos">
+                    {{#each listaDeProductos}}
+                        <tr> <td>{{this.title}}</td> <td>${{this.price}}</td> <td><img width="50" src="{{this.thumbnail}}" alt=""></td> </tr>
+                        {{else}}
+                        <tr id="noProductFound"><td colspan="3"><h3 class="alert alert-warning">No se encontraron productos</h3></td></tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

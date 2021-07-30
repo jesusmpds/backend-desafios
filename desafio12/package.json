@@ -1,5 +1,5 @@
 {
-  "name": "desafio10",
+  "name": "desafio12",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.2"
+    "express-handlebars": "^5.3.2",
+    "socket.io": "^4.1.3"
   }
 }

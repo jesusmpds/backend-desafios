@@ -1,8 +1,12 @@
 const express = require('express')
-let productos = require('./productos')
-const productosRouter = express.Router();
-const productosVista = express.Router();
+let productos = require('./controller/productos')
 const APP = express();
+
+//socket.io server
+const http = require('http');
+const server = http.createServer(APP);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 //Handlebar Engine
 let exphbs  = require('express-handlebars');
@@ -13,27 +17,42 @@ APP.set('view engine', 'handlebars');
 APP.use(express.json());
 APP.use(express.urlencoded({extended: true}));
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 //Routes
+const productosAPIRouter = express.Router();
+const productosVista = express.Router();
 
+APP.use('/api',productosAPIRouter)
+APP.use(productosVista)
+APP.use(express.static('./public'))
+//Vistas
 APP.get('/', (req,res)=>{
-    res.sendFile(__dirname + '/public/index.html')
+    res.redirect('/productos')
 })
 
-productosVista.get('/productos/vista', (req,res)=>{
+io.on('connection', (socket) => {
+    console.log('¡Nuevo cliente conectado!');
+    socket.on('newProduct', (producto) => {
+        productos.guardar(producto.title, producto.price, producto.thumbnail)
+        io.emit('newProduct', productos);
+    });
+  });
+
+productosVista.get('/productos', (req,res)=>{
     let listaDeProductos = productos.leer()
-    res.render('productos',{listaDeProductos})
+    res.render('partials/productos',{listaDeProductos})
 })
 
-productosRouter.get('/productos', (req,res)=> {
+//API 
+productosAPIRouter.get('/productos', (req,res)=> {
     if(productos.leer().length === 0) {
         res.json({'error': 'no hay productos cargados'})
     }
     res.json(productos.leer())
 })
 
-productosRouter.get('/productos/:id', (req,res)=>{
+productosAPIRouter.get('/productos/:id', (req,res)=>{
     let productoByID = productos.leer().find(producto => producto.id === parseInt(req.params.id))
     if (productoByID === undefined){
         res.json({error : 'producto no encontrado'})
@@ -41,15 +60,15 @@ productosRouter.get('/productos/:id', (req,res)=>{
     res.json(productoByID)
 })
 
-productosRouter.post('/productos', (req,res)=>{
+productosAPIRouter.post('/productos', (req,res)=>{
     let title = req.body.title
     let price = req.body.price
     let thumbnail = req.body.thumbnail
     productos.guardar(title, price, thumbnail)
-    res.redirect('back')
+    res.json('productos')
 })
 
-productosRouter.put('/productos/:id',(req,res)=>{
+productosAPIRouter.put('/productos/:id',(req,res)=>{
     let foundIndex = productos.leer().findIndex(producto => producto.id === parseInt(req.params.id));
     productos.productos[foundIndex] = req.body;
     productos.productos[foundIndex].id = parseInt(req.params.id);
@@ -57,16 +76,12 @@ productosRouter.put('/productos/:id',(req,res)=>{
     
 })
 
-productosRouter.delete('/productos/:id', (req,res)=>{
+productosAPIRouter.delete('/productos/:id', (req,res)=>{
     productos.productos = productos.leer().filter(producto => producto.id !== parseInt(req.params.id))
     console.log(productos.leer())
     res.json(productos)
 })
 
-APP.use('/api',productosRouter)
-APP.use(productosVista)
-
-const server = APP.listen(PORT, ()=> console.log(`Servidor en el puerto ${PORT}`))
+server.listen(PORT, ()=> console.log(`Servidor en el puerto ${PORT}`))
 
 server.on('error', error => console.log(error))
-
