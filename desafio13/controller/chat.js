@@ -16,7 +16,7 @@ class Chat{
     }
 
     enviarMensaje(email, msg){
-        let dateAndTime = dayjs().format()
+        let dateAndTime = dayjs().format('[(]DD/MM/YYYY hh[:]mm[:]ss[)]')
         let mensajes = JSON.parse(fs.readFileSync('./data/mensajes.json'));
         mensajes.push({
             username:email,

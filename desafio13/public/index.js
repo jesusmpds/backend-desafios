@@ -44,7 +44,7 @@ form.addEventListener('submit', (e)=> {
 // ---------------------------------------------------
 //Chat
 
-    let messages = document.getElementById('div-chat');
+    let messages = document.getElementById('ul-chat');
     let inputEmail = document.getElementById('emailChat');
     let messageInput = document.getElementById('messageChat');
     let botonEnviar = document.getElementById('buttonSendMessage');
@@ -62,7 +62,6 @@ form.addEventListener('submit', (e)=> {
     //Recibir mensaje y añadirlo al front
     socket.on('newMessage', (msg)=> {
     let item = document.createElement('li');
-    item.innerHTML = `<span class="badge bg-dark">${msg.username}</span> <span>${msg.date}</span>: ${msg.msj}`;
+    item.innerHTML = `<span class="badge bg-dark">${msg.username}</span> <span>${msg.date}</span>: <span>${msg.msg}</span>`;
     messages.appendChild(item);
-    window.scrollTo(0, document.body.scrollHeight);
     });
