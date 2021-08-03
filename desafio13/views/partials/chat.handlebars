@@ -1,0 +1,24 @@
+<section class="row pt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h2>Centro de mensajes</h2>
+            <div class="row">
+                <label for="emailChat" class="form-label"  >Añade tu email</label>
+                    <input type="email" name="emailChat" id="emailChat" class="form-control" placeholder="email@example.com">
+                <h3>Mensajes:</h3>
+                <div id="div-chat" class="card pb-4 h-50">
+                    <ul>
+                        {{#each chat }}
+                            <li>{{ this.username }} {{this.date}}: {{ this.msg }}</li>
+                            <br>
+                        {{/each }}
+                    </ul>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Escribe tu mensaje" aria-label="Escribe tu mensaje" id="messageChat">
+                    <button class="btn btn-primary" type="button" id="buttonSendMessage">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
