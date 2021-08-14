@@ -1,34 +1,47 @@
-
-class Product {
+const fs = require('fs')
+const products = require('../controller/productos')
+class Cart {
     constructor(){
         try {
-            fs.readFileSync('../data/productos.json');
+            fs.readFileSync('./data/carrito.json');
         } catch (error) {
-            fs.writeFileSync('../data/productos.json', JSON.stringify([]));
+            fs.writeFileSync('./data/carrito.json', JSON.stringify({
+                id: 1,
+                timestamp: Date.now(),
+                products:[]
+            }));
         }
     }
-    
-    save(name,description,imageURL,price,stock){
-        let db = JSON.parse(fs.readFileSync('../data/productos.json'))
-        let nuevoProducto= {
-            id: db.length + 1,
-            timestamp: new Date.now(),
-            name: name,
-            description: description,
-            code: db.length * 99 + "AR",
-            imageURL: imageURL,
-            price: price,
-            stock:stock
+
+    addProduct(productId){
+        let newProduct = products.findProduct(productId)
+        let cart = JSON.parse(fs.readFileSync('./data/carrito.json'))
+
+        if(newProduct && !cart.products.find(product => product.id === productId)){
+            cart.products.push(newProduct)
+            fs.writeFileSync('./data/carrito.json', JSON.stringify(cart));
         }
-        db.push(nuevoProducto)
-        fs.writeFileSync('./data/productos.json', JSON.stringify(db));
+        return newProduct;
     }
 
-    read(){
-        return JSON.parse(fs.readFileSync('../data/productos.json'))
+    showProducts(){
+        let cart = JSON.parse(fs.readFileSync('./data/carrito.json'))
+        return cart.products
     }
 
+    removeProduct(productId){
+        let productToRemove = products.findProduct(productId)
+        let cart = JSON.parse(fs.readFileSync('./data/carrito.json'))
+        console.log(cart.products.filter(product => product.id !== productToRemove.id))
+        if(productToRemove){
+            let updatedCartProducts = cart.products.filter(product => product.id !== productToRemove.id)
+            cart.products = updatedCartProducts;
+            fs.writeFileSync('./data/carrito.json', JSON.stringify(cart));
+            return cart;
+        }
+
+    }
 }
 
-let products = new Product()
-module.exports = products;
+let cart = new Cart()
+module.exports = cart;

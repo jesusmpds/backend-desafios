@@ -4,37 +4,34 @@ let products = require('../controller/productos')
 
 productosAPIRouter.get('/listar', (req,res)=> {
     if(products.read().length === 0) {
-        res.json({'error': 'no hay productos cargados'})
+        return res.json({'error': 'no hay productos cargados'})
     }
     res.json(products.read())
 })
 
 productosAPIRouter.get('/listar/:id', (req,res)=>{
-    let productByID = products.read().find(product => product.id === parseInt(req.params.id))
-    if (productByID === undefined){
-        res.json({error : 'producto no encontrado'})
+    let productById = products.findProduct(parseInt(req.params.id))
+    if (productById === undefined){
+        return res.json({error : 'producto no encontrado'})
     }
-    res.json(productByID)
+    res.json(productById)
 })
 
 productosAPIRouter.post('/agregar', (req,res)=>{
     const {name, description, imageURL, price, stock} = req.body
-    products.guardar(name,description,imageURL,price,stock)
-    res.json('products')
+    products.save(name,description,imageURL,parseInt(price),stock)
+    res.json(products.read())
 })
 
 productosAPIRouter.put('/actualizar/:id',(req,res)=>{
-    let foundIndex = products.read().findIndex(product => product.id === parseInt(req.params.id));
-    products.products[foundIndex] = req.body;
-    products.products[foundIndex].id = parseInt(req.params.id);
-    res.json(products.products[foundIndex])
-    
+    let productsUpdated = products.update(parseInt(req.params.id), req.body.name,req.body.description, req.body.imageURL, req.body.price,req.body.stock);
+
+    res.json(productsUpdated)
 })
 
 productosAPIRouter.delete('/borrar/:id', (req,res)=>{
-    products.products = products.read().filter(product => product.id !== parseInt(req.params.id))
-    console.log(products.read())
-    res.json(products)
+    let productsUpdated = products.delete(parseInt(req.params.id))
+    res.json(productsUpdated)
 })
 
 module.exports = productosAPIRouter;
