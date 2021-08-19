@@ -1,0 +1,26 @@
+{
+  "name": "desafio17",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.6",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "knex": "^0.21.21",
+    "mysql": "^2.18.1",
+    "socket.io": "^4.1.3",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
