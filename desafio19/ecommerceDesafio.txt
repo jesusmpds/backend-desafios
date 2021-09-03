@@ -66,7 +66,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894575678,
-    "name": "Escuadra",
+    "name": "Cubo",
     "description": "Esta es una escuadra",
     "code": "99AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -75,7 +75,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894632866,
-    "name": "Escuadra",
+    "name": "Tabla",
     "description": "Esta es una escuadra",
     "code": "198AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -84,7 +84,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Queso",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -93,7 +93,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Jamon",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -102,7 +102,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Silla",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -111,7 +111,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Leche",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -120,7 +120,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Pan",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -129,7 +129,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Triangulo",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -138,7 +138,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Cuadrado",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
@@ -147,7 +147,7 @@ db.mensajes.insertMany([
     },
     {
     "timestamp": 1628894989333,
-    "name": "Escuadra",
+    "name": "Zapatos",
     "description": "Esta es una escuadra",
     "code": "297AR",
     "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
