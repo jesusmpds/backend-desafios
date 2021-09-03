@@ -1,0 +1,188 @@
+use ecommerce
+
+db.createCollection('mensajes')
+db.createCollection('productos')
+
+db.mensajes.insertMany([
+    { "username": "Test", "date": "(03/08/2021 07:25:59)", "msg": "Test" },
+    { "username": "rest", "date": "(03/08/2021 10:44:26)", "msg": "Hola" },
+    { "username": "lmtrovat", "date": "(03/08/2021 10:45:16)", "msg": "Feo" },
+    { "username": "Jesus", "date": "(03/08/2021 10:45:26)", "msg": "Boluda" },
+    {
+      "username": "lmtrovat",
+      "date": "(03/08/2021 10:45:27)",
+      "msg": "Y mi sorpresa? "
+    },
+    {
+      "username": "lmtrovat",
+      "date": "(03/08/2021 10:45:32)",
+      "msg": "Sad face"
+    },
+    { "username": "Jesus", "date": "(03/08/2021 10:45:41)", "msg": "No hay " },
+    {
+      "username": "miguelvielma96@gmail.com",
+      "date": "(04/08/2021 03:52:43)",
+      "msg": "Holis "
+    },
+    { "username": "lolo", "date": "(04/08/2021 03:52:59)", "msg": "Qlq " },
+    { "username": "lelo", "date": "(04/08/2021 03:54:14)", "msg": "qlq mano" },
+    {
+      "username": "m@venezuela.com",
+      "date": "(04/08/2021 03:55:16)",
+      "msg": "Q paso"
+    },
+    { "username": "Jesus", "date": "(04/08/2021 03:56:06)", "msg": "aquila" },
+    {
+      "username": "m@venezuela.com\"><h1>ayyy</h1>",
+      "date": "(04/08/2021 03:57:12)",
+      "msg": "Test"
+    },
+    {
+      "username": "m@venezuela.com\"><h1>ayyy</h1>",
+      "date": "(04/08/2021 03:57:23)",
+      "msg": "tienes una vulnerabilidad de XSS persistente "
+    },
+    {
+      "username": "m@venezuela.com\"><script>alert(/hackerman/);</script>",
+      "date": "(04/08/2021 03:57:52)",
+      "msg": "Testing"
+    },
+    {
+      "username": "m@venezuela.com\"><script>alert(/hackerman/);</script>",
+      "date": "(04/08/2021 03:58:16)",
+      "msg": "Pero como que solo es local"
+    }
+  ])
+
+  db.productos.insertMany([
+    {
+    "timestamp": 1628894523528,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "0AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 180,
+    "stock": 240
+    },
+    {
+    "timestamp": 1628894575678,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "99AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 150,
+    "stock": 24
+    },
+    {
+    "timestamp": 1628894632866,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "198AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 125,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 123,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 500,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 1700,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 3456,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 3333,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 4200,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 2350,
+    "stock": 25
+    },
+    {
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 1234,
+    "stock": 25
+    }
+])
+
+db.mensajes.find({})
+db.productos.find({})
+
+db.mensajes.count()
+db.productos.count()
+
+db.productos.insertOne({
+    "timestamp": 1628894989333,
+    "name": "Escuadra",
+    "description": "Esta es una escuadra",
+    "code": "297AR",
+    "imageURL": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "price": 3000,
+    "stock": 25
+    })
+
+db.productos.find({"price": {$lt: 1000}})
+db.productos.find({"price": {$gte: 1000, $lte: 3000}})
+db.productos.find({"price": {$gt: 3000}})
+db.productos.find({}, {"name":1, "_id": 0}).skip(2).sort({"price": 1}).limit(1)
+
+db.productos.updateMany({},{$set: {"stock": 100}})
+
+db.productos.updateMany({"price": {$gt: 4000}},{$set: {"stock": 0}})
+
+db.productos.deleteMany({
+    "price": {$lt: 1000}
+})
+
+
