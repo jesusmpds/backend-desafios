@@ -5,6 +5,7 @@ const app = express();
 
 //Routes
 const productosAPIRouter = require('./routes/productos')
+const productosVista = require('./routes/vista')
 const carritoRouter = require('./routes/carrito')
 const ChatWebsocket = require('./routes/websocket')
 
@@ -22,7 +23,7 @@ app.set('view engine', 'handlebars');
 //Middlewares  
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(cors());
+//app.use(cors());
 app.use(compression());
 app.use(express.static('./public'))
 
@@ -33,7 +34,6 @@ app.use((req, res, next) => {
     let paths = ['agregar', 'borrar', 'actualizar']
     if(paths.some( currentPath => req.path.includes(currentPath))){
         let admin = req.query.admin
-        console.log(admin)
         admin === 'true' ? ADMIN = true : null;
         ADMIN === true ? next() : res.json({ error : -1, descripcion: `ruta ${req.path}`, metodo: `${req.method} no autorizado`})
     }
@@ -42,5 +42,10 @@ app.use((req, res, next) => {
 //Routes
 app.use('/productos',productosAPIRouter)
 app.use('/carrito', carritoRouter)
+app.use(productosVista)
 //app.use('/', ChatWebsocket(io))
+app.use( (err, req, res, next) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 module.exports = server;

@@ -3,13 +3,24 @@ const productModel = require('../dao/models/products')
 module.exports = class {
 
     async getProduct(id){
-        return productModel.findById(id)
+        try {
+            const Product = await productModel.findById(id)
+            return Product;
+        } catch (error) {
+            console.log(error)
     }
+}
     async getAllProducts(){
-        return productModel.find({})
-    } 
+        try {
+            const allProducts = productModel.find()
+            return allProducts;
+        } catch (error) {
+            console.log(error)
+        }
+    }
     async addProduct(producto){
-        await productModel.create(producto)
+        const product = await productModel.create(producto)
+        return product
     }
     async updateProduct(id, productUpdated){
         const productToUpdate = await productModel.findByIdAndUpdate(id,productUpdated, {new:true,})
