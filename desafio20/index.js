@@ -5,4 +5,5 @@ const {getConnection} = require('./dao/db/connection')
 getConnection().then((message) => {
     console.log(message)
     server.listen(PORT, ()=> console.log(`Servidor en el puerto ${PORT}`))
-}).catch(console.log)
+    server.on('error', error => console.log(error))
+}).catch()

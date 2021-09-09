@@ -3,7 +3,7 @@ const {Schema, model} = require('mongoose')
 const messageSchema = new Schema({
     username: String,
     date: { type: Date, default: Date.now },
-    message: String
-})
+    msg: String
+},{ collection: 'mensajes' })
 
 module.exports = model('Message', messageSchema)

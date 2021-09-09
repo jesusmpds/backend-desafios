@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars');
 //Middlewares  
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-//app.use(cors());
+app.use(cors());
 app.use(compression());
 app.use(express.static('./public'))
 
@@ -37,15 +37,12 @@ app.use((req, res, next) => {
         admin === 'true' ? ADMIN = true : null;
         ADMIN === true ? next() : res.json({ error : -1, descripcion: `ruta ${req.path}`, metodo: `${req.method} no autorizado`})
     }
+    next();
   });
 
 //Routes
-app.use('/productos',productosAPIRouter)
+app.use('/productos', productosAPIRouter)
 app.use('/carrito', carritoRouter)
 app.use(productosVista)
-//app.use('/', ChatWebsocket(io))
-app.use( (err, req, res, next) => {
-  console.error(err.stack)
-  res.status(500).send('Something broke!')
-})
+ChatWebsocket(io);
 module.exports = server;

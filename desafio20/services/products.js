@@ -12,7 +12,8 @@ module.exports = class {
 }
     async getAllProducts(){
         try {
-            const allProducts = productModel.find()
+            const allProducts = await productModel.find()
+            console.log(allProducts)
             return allProducts;
         } catch (error) {
             console.log(error)

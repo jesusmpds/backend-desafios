@@ -1,32 +1,46 @@
-const fs = require('fs');
-const dayjs = require('dayjs')
+const MessageService = require('../services/chat')
+const message = new MessageService()
 
-class Chat{
-    constructor() {
-        try {
-            fs.readFileSync('./data/mensajes.json');
-        } catch (error) {
-            fs.writeFileSync('./data/mensajes.json', JSON.stringify([]));
-        }
-    }
-
-    leer(){
-        let mensajes = JSON.parse(fs.readFileSync('./data/mensajes.json'));
-        return mensajes;
-    }
-
-    enviarMensaje(email, msg){
-        let dateAndTime = dayjs().format('[(]DD/MM/YYYY hh[:]mm[:]ss[)]')
-        let mensajes = JSON.parse(fs.readFileSync('./data/mensajes.json'));
-        mensajes.push({
-            username:email,
-            date:dateAndTime,
-            msg:msg
-        });
-        fs.writeFileSync('./data/mensajes.json', JSON.stringify(mensajes));
-
-        return mensajes[mensajes.length-1];
+exports.saveMessage = async (mensaje) =>{
+    try {
+        let messages = await message.saveMessage({
+            username:mensaje.username, 
+            msg: mensaje.messageBody
+          });
+        console.log(mensaje)
+        console.log(messages)
+        //Emitir nuevo mensaje al cliente
+        io.emit('newMessage', messages);
+    } catch (error) {
+        console.log(error)
     }
 }
 
-module.exports = Chat;
+exports.getAllMessages = async () =>{
+    try {
+        const allMessages = await message.getAllMessages();
+        console.log(allMessages)
+        return allMessages;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.editMessage = async (req,res,next) =>{
+    try {
+        const {body, params} = req
+        const editMessage = await message.editMessage(params.id, body)
+        res.json(editMessage)
+    } catch (error) {
+        res.json(error)
+    }
+}
+
+exports.deleteMessage = async (req,res,next) =>{
+    try {
+        const deletedMessage = await message.deleteMessage(req.params.id)
+        res.json(deletedMessage)
+    } catch (error) {
+        res.json(error)
+    }
+}

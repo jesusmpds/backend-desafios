@@ -7,7 +7,7 @@ exports.getConnection = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
           });
-        return "Connection Succes"
+        return "Connection Success"
     } catch (error) {
         return "Connection Failed"
     }

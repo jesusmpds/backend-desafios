@@ -3,19 +3,28 @@ const MessageModel = require('../dao/models/messages')
 module.exports = class {
 
     async getAllMessages(){
-        return MessageModel.find({})
+        try {
+            return MessageModel.find({})
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-    async sendMessage(producto){
-        const product = await productModel.create(producto)
-        return product
+    async saveMessage(message){
+        try {
+            const newMessage = await MessageModel.create(message);
+            return newMessage;
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
-    async updateProduct(id, productUpdated){
-        const productToUpdate = await productModel.findByIdAndUpdate(id,productUpdated, {new:true,})
-        return productToUpdate;
+    async editMessage(id, messageUpdated){
+        const messageToUpdate = await MessageModel.findByIdAndUpdate(id,messageUpdated, {new:true,})
+        return messageToUpdate;
 
     }
-    async deleteProduct(id){
-        await productModel.findByIdAndDelete(id)
+    async deleteMessage(id){
+        await MessageModel.findByIdAndDelete(id)
     }
 }

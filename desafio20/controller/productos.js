@@ -14,15 +14,18 @@ exports.addProduct = async (req,res,next) =>{
 exports.getAllProducts = async (req,res,next) =>{
     try {
         const allProducts = await product.getAllProducts();
+        console.log(allProducts)
         res.json(allProducts);
     } catch (error) {
+        console.log(error)
         res.json(error);
     }
 }
 
 exports.getProduct = async (req,res,next) =>{
     try {
-        return product.getProduct(req.params.id);
+        const oneProduct = await product.getProduct(req.params.id);
+        res.json(oneProduct);
     } catch (error) {
         res.json(error)
     }
