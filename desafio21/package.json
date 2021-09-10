@@ -1,0 +1,15 @@
+{
+  "name": "desafio21",
+  "version": "1.0.0",
+  "description": "",
+  "main": "calculadora.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^27.1.1"
+  }
+}
