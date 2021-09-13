@@ -2,7 +2,7 @@ const ProductService = require('../services/products')
 
 const product = new ProductService()
 
-exports.addProduct = async (req,res,next) =>{
+exports.addProduct = async (req ,res,next) =>{
     try {
         const newProduct = await product.addProduct(req.body);
         res.json(newProduct);
@@ -14,8 +14,7 @@ exports.addProduct = async (req,res,next) =>{
 exports.getAllProducts = async (req,res,next) =>{
     try {
         const allProducts = await product.getAllProducts();
-        console.log(allProducts)
-        res.json(allProducts);
+        if(req.path !== '/productos') res.send(allProducts);
     } catch (error) {
         console.log(error)
         res.json(error);

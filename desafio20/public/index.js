@@ -1,22 +1,46 @@
 const socket = io();
 
-// Add new product to the table
-socket.on('newProduct', data => {
+socket.on('allProducts', products => {
     let notFoundAlert = document.getElementById('noProductFound')
     if(notFoundAlert){
         notFoundAlert.remove()
     }
-    let lastProduct = data.productos.length -1
+    let tbody = document.getElementById("productos")
+    products.forEach((product) =>{
+        tbody.insertRow().innerHTML = `
+        <td>${product.name}</td>
+        <td>$ ${product.price}</td>
+        <td>
+            <img src="${product.imageURL}" class="img-thumbnail"/>
+        </td>
+        <td>${product.description}</td>
+        <td>${product.code}</td>
+        <td>${product.stock}</td>
+    `
+    })
+    
+});
+
+// Add new product to the table
+socket.on('newProduct', product => {
+    let notFoundAlert = document.getElementById('noProductFound')
+    if(notFoundAlert){
+        notFoundAlert.remove()
+    }
     let tbody = document.getElementById("productos")
 
     tbody.insertRow().innerHTML = `
-        <td>${data.productos[lastProduct].title}</td>
-        <td>$ ${data.productos[lastProduct].price}</td>
+        <td>${product.name}</td>
+        <td>$ ${product.price}</td>
         <td>
-            <img src="${data.productos[lastProduct].thumbnail}" class="img-thumbnail"/>
+            <img src="${product.imageURL}" class="img-thumbnail"/>
         </td>
+        <td>${product.description}</td>
+        <td>${product.code}</td>
+        <td>${product.stock}</td>
     `
 });
+
 
 // Event listener
 let form = document.getElementById('form');
@@ -24,20 +48,28 @@ let form = document.getElementById('form');
 let title = document.getElementById('nombreProducto');
 let price = document.getElementById('precioProducto');
 let thumbnail = document.getElementById('thumbnailURL');
+let description = document.getElementById('productDescription')
+let code = document.getElementById('productCode')
+let stock = document.getElementById('productStock')
 
 form.addEventListener('submit', (e)=> {
     e.preventDefault();
-    console.log(e)
-    if (title.value && price.value && thumbnail.value) {
+    if (title.value && price.value && thumbnail.value && description.value && code.value && stock.value) {
     socket.emit('newProduct', {
-        title: title.value,
+        name: title.value,
+        description: description.value,
+        code: code.value,
+        imageURL: thumbnail.value,
         price: price.value,
-        thumbnail: thumbnail.value
+        stock: stock.value
     });
     document.getElementById('alert').innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">Se creo correctamente el producto <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
     document.getElementById('nombreProducto').value = '',
     document.getElementById('precioProducto').value = '',
     document.getElementById('thumbnailURL').value = '';
+    document.getElementById('productDescription').value = '';
+    document.getElementById('productCode').value = '';
+    document.getElementById('productStock').value = '';
     };
 });
 
@@ -59,9 +91,18 @@ form.addEventListener('submit', (e)=> {
     }
     });
 
-    //Recibir mensaje y añadirlo al front
+    //Recibir mensajes y añadirlos al front
+    socket.on('allMessages', (msgs)=> {
+        msgs.forEach( msg => {
+            let item = document.createElement('li');
+            item.innerHTML = `<span class="badge bg-dark">${msg.username}</span> <span>${msg.date}</span>: <span>${msg.msg}</span>`;
+            messages.appendChild(item);
+        });
+    
+    });
+
     socket.on('newMessage', (msg)=> {
-    let item = document.createElement('li');
-    item.innerHTML = `<span class="badge bg-dark">${msg.username}</span> <span>${msg.date}</span>: <span>${msg.msg}</span>`;
-    messages.appendChild(item);
+        let item = document.createElement('li');
+        item.innerHTML = `<span class="badge bg-dark">${msg.username}</span> <span>${msg.date}</span>: <span>${msg.msg}</span>`;
+        messages.appendChild(item);
     });
