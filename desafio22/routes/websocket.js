@@ -1,6 +1,5 @@
 let messagesController = require('../controller/chat')
 let productController = require('../controller/productSocket')
-const normalizeMessages = require('../dao/models/schemaNormalizedMessages')
 
 module.exports = (io)=>{
     // Productos

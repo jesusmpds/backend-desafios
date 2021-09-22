@@ -12,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dayjs": "^1.10.6",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
+    "express-session": "^1.17.2",
     "mongoose": "6.0.5",
     "normalizr": "^3.6.1",
     "socket.io": "^4.1.3"

@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const compression = require('compression');
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 //Routes
@@ -8,6 +10,7 @@ const productosAPIRouter = require('./routes/productos')
 const productosVista = require('./routes/vista')
 const carritoRouter = require('./routes/carrito')
 const ChatWebsocket = require('./routes/websocket')
+const sessionsRouter = require('./routes/sessions')
 
 //socket.io server
 const http = require('http');
@@ -26,22 +29,21 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors());
 app.use(compression());
 app.use(express.static('./public'))
-
-//Admin
-let ADMIN = false;
-
-app.use((req, res, next) => {
-    let paths = ['agregar', 'borrar', 'actualizar']
-    if(paths.some( currentPath => req.path.includes(currentPath))){
-        let admin = req.query.admin
-        admin === 'true' ? ADMIN = true : null;
-        ADMIN === true ? next() : res.json({ error : -1, descripcion: `ruta ${req.path}`, metodo: `${req.method} no autorizado`})
+app.use(cookieParser());
+// Sessions
+app.use(
+  session({
+    secret: "dbnÑASHIDÑahsñDASHaisbhiUAWEHDIawdawd225s4d56ASlñakshdLÑADHÑasdn",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60000
     }
-    next();
-  });
+  })
+);
 
 //Routes
-app.use('/productos', productosAPIRouter)
+app.use('/productos', productosAPIRouter, sessionsRouter)
 app.use('/carrito', carritoRouter)
 app.use(productosVista)
 ChatWebsocket(io);

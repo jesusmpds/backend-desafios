@@ -1,77 +1,110 @@
 const socket = io();
 
-// socket.on('allProducts', products => {
-//     let notFoundAlert = document.getElementById('noProductFound')
-//     if(notFoundAlert){
-//         notFoundAlert.remove()
-//     }
-//     let tbody = document.getElementById("productos")
-//     products.forEach((product) =>{
-//         tbody.insertRow().innerHTML = `
-//         <td>${product.name}</td>
-//         <td>$ ${product.price}</td>
-//         <td>
-//             <img src="${product.imageURL}" class="img-thumbnail"/>
-//         </td>
-//         <td>${product.description}</td>
-//         <td>${product.code}</td>
-//         <td>${product.stock}</td>
-//     `
-//     })
-    
-// });
+if(window.location.pathname === '/productos/login'){
+    const username = document.getElementById('userNameLogIn')
+    const logInButton = document.getElementById('logInButton')
 
-// Add new product to the table
-socket.on('newProduct', product => {
-    let notFoundAlert = document.getElementById('noProductFound')
-    if(notFoundAlert){
-        notFoundAlert.remove()
-    }
-    let tbody = document.getElementById("productos")
+    logInButton.addEventListener('click', async () => {
+        try {
+            const data = {username: username.value}
+            const response = await fetch('/productos/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            redirect: 'follow'
+            }).then( res => {
+                console.log(res)
+                if (res.redirected) {
+                    window.location.href = '/productos';
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        
+    })
+}
 
-    tbody.insertRow().innerHTML = `
-        <td>${product.name}</td>
-        <td>$ ${product.price}</td>
-        <td>
-            <img src="${product.imageURL}" class="img-thumbnail"/>
-        </td>
-        <td>${product.description}</td>
-        <td>${product.code}</td>
-        <td>${product.stock}</td>
-    `
-});
+if(window.location.pathname === '/productos/logout'){
+    setTimeout(()=> window.location.href = '/productos/login',2500)
+}
+
+if(window.location.pathname === '/productos'){
+
+    const logOutButton = document.getElementById('logOutButton')
+
+    logOutButton.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/productos/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+              },
+            redirect: 'follow'
+            }).then( res => {
+                window.location.href = '/productos/logout'
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        
+    })
 
 
-// Event listener
-let form = document.getElementById('form');
+    // Add new product to the table
+    socket.on('newProduct', product => {
+        let notFoundAlert = document.getElementById('noProductFound')
+        if(notFoundAlert){
+            notFoundAlert.remove()
+        }
+        let tbody = document.getElementById("productos")
 
-let title = document.getElementById('nombreProducto');
-let price = document.getElementById('precioProducto');
-let thumbnail = document.getElementById('thumbnailURL');
-let description = document.getElementById('productDescription')
-let code = document.getElementById('productCode')
-let stock = document.getElementById('productStock')
-
-form.addEventListener('submit', (e)=> {
-    e.preventDefault();
-    if (title.value && price.value && thumbnail.value && description.value && code.value && stock.value) {
-    socket.emit('newProduct', {
-        name: title.value,
-        description: description.value,
-        code: code.value,
-        imageURL: thumbnail.value,
-        price: price.value,
-        stock: stock.value
+        tbody.insertRow().innerHTML = `
+            <td>${product.name}</td>
+            <td>$ ${product.price}</td>
+            <td>
+                <img src="${product.imageURL}" class="img-thumbnail"/>
+            </td>
+            <td>${product.description}</td>
+            <td>${product.code}</td>
+            <td>${product.stock}</td>
+        `
     });
-    document.getElementById('alert').innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">Se creo correctamente el producto <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-    document.getElementById('nombreProducto').value = '',
-    document.getElementById('precioProducto').value = '',
-    document.getElementById('thumbnailURL').value = '';
-    document.getElementById('productDescription').value = '';
-    document.getElementById('productCode').value = '';
-    document.getElementById('productStock').value = '';
-    };
-});
+
+
+    // Event listener
+
+    let form = document.getElementById('form');
+
+    let title = document.getElementById('nombreProducto');
+    let price = document.getElementById('precioProducto');
+    let thumbnail = document.getElementById('thumbnailURL');
+    let description = document.getElementById('productDescription')
+    let code = document.getElementById('productCode')
+    let stock = document.getElementById('productStock')
+
+    form.addEventListener('submit', (e)=> {
+        e.preventDefault();
+        if (title.value && price.value && thumbnail.value && description.value && code.value && stock.value) {
+        socket.emit('newProduct', {
+            name: title.value,
+            description: description.value,
+            code: code.value,
+            imageURL: thumbnail.value,
+            price: price.value,
+            stock: stock.value
+        });
+        document.getElementById('alert').innerHTML = '<div class="alert alert-success alert-dismissible fade show" role="alert">Se creo correctamente el producto <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        document.getElementById('nombreProducto').value = '',
+        document.getElementById('precioProducto').value = '',
+        document.getElementById('thumbnailURL').value = '';
+        document.getElementById('productDescription').value = '';
+        document.getElementById('productCode').value = '';
+        document.getElementById('productStock').value = '';
+        };
+    });
 
 // ---------------------------------------------------
 //Chat
@@ -119,3 +152,4 @@ form.addEventListener('submit', (e)=> {
         item.innerHTML = `<span class="badge bg-dark">${msg.username}</span> <span>${msg.date}</span>: <span>${msg.msg}</span>`;
         messages.appendChild(item);
     });
+}

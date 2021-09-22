@@ -1,3 +1,6 @@
+{{#if loggedUsername}}
+    {{>loggedIn}}
+{{/if}}
 {{>crearProductos}}
 <section class="row pt-4">
     <div class="card shadow">
@@ -14,7 +17,6 @@
                             <th>Descripción</th>
                             <th>Código</th>
                             <th>Stock</th>
-
                         </tr>
                     </thead>
                     <tbody id="productos">

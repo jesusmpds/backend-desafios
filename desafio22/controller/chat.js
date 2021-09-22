@@ -15,9 +15,9 @@ exports.saveMessage = async (socket, mensaje) =>{
 exports.getAllMessages = async () =>{
     try {
         const allMessages = await message.getAllMessages();
-        console.log(allMessages)
+        // console.log(allMessages)
         const normalizedAllMessages = normalizeData(allMessages);
-        console.log(JSON.stringify(normalizeData(normalizedAllMessages), null, '\t'))
+        // console.log(JSON.stringify(normalizeData(normalizedAllMessages), null, '\t'))
         return allMessages;
     } catch (error) {
         console.log(error)
