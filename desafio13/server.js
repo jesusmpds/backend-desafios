@@ -18,8 +18,6 @@ APP.set('view engine', 'handlebars');
 APP.use(express.json());
 APP.use(express.urlencoded({extended: true}));
 
-const PORT = process.env.PORT || 8080;
-
 //Routes
 const productosAPIRouter = express.Router();
 const productosVista = express.Router();

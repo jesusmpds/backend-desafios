@@ -1,0 +1,39 @@
+<section class="row pt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <h2>Centro de mensajes</h2>
+            <hr>
+            <div class="row">
+                <div class="col-6">
+                    <label for="emailChat" class="form-label mt-4"  >Añade tu email</label>
+                        <input type="email" name="emailChat" id="emailChat" class="form-control" placeholder="email@example.com">
+                    <label for="firstName" class="form-label mt-4"  >Añade tu nombre</label>
+                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Jesus">
+                    <label for="lastName" class="form-label mt-4"  >Añade tu apellido</label>
+                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Perez">
+                </div>
+                <div class="col-6">
+                    <label for="userAge" class="form-label mt-4"  >Añade tu edad</label>
+                        <input type="text" name="age" id="userAge" class="form-control" placeholder="22">
+                    <label for="userAlias" class="form-label mt-4"  >Añade tu alias</label>
+                        <input type="text" name="alias" id="userAlias" class="form-control" placeholder="jsmpd">
+                    <label for="userAvatar" class="form-label mt-4"  >Añade tu avatar URL</label>
+                        <input type="url" name="avatar" id="userAvatar" class="form-control" placeholder="https://example.com" pattern="https://.*" required>
+                </div>
+                <h3 class="py-2">Mensajes:</h3>
+                <div class="card pb-4 vh-50">
+                    <ul id="ul-chat" class="list-unstyled">
+                        {{#each chat }}
+                            <li><span class="badge bg-dark">{{ this.username }}</span> <span>{{this.date}}</span>: {{ this.msg }}</li>
+                            <br>
+                        {{/each }}
+                    </ul>
+                </div>
+                <div class="input-group my-3">
+                    <input type="text" class="form-control" placeholder="Escribe tu mensaje" aria-label="Escribe tu mensaje" id="messageChat">
+                    <button class="btn btn-primary" type="button" id="buttonSendMessage">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

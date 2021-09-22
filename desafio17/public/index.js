@@ -53,7 +53,7 @@ form.addEventListener('submit', (e)=> {
     if (inputEmail.value && messageInput.value) {
         socket.emit('newMessage', {
             username: inputEmail.value,
-            message:messageInput.value
+            msg:messageInput.value
         });
         messageInput.value = '';
     }
