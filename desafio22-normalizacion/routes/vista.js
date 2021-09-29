@@ -31,6 +31,7 @@ productosVista.get('/productos', async (req,res)=>{
         const loggedUsername = req.session.user
         let listaDeProductos = await Products.getAllProducts();
         let chat = await Chat.getAllMessages();
+        console.log(chat)
         res.render('partials/productos',{listaDeProductos,chat, loggedUsername})
         return
     }

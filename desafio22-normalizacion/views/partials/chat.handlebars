@@ -24,7 +24,7 @@
                 <div class="card pb-4 vh-50">
                     <ul id="ul-chat" class="list-unstyled">
                         {{#each chat }}
-                            <li><span class="badge bg-dark">{{ this.username }}</span> <span>{{this.date}}</span>: {{ this.msg }}</li>
+                            <li><span class="badge bg-dark">{{ this.author.alias }}</span> <span>{{this.date}}</span>: {{ this.text }}</li>
                             <br>
                         {{/each }}
                     </ul>

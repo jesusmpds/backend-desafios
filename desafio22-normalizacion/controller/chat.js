@@ -15,11 +15,11 @@ exports.saveMessage = async (socket, mensaje) =>{
 exports.getAllMessages = async () =>{
     try {
         const allMessages = await message.getAllMessages();
-        
-        const historyChat = { id: 1, content: allMessages};
+    
+        const historyChat = {id: 1, content:allMessages};
         console.log(historyChat)
         const normalizedAllMessages = normalizeData(historyChat);
-        console.log(JSON.stringify(normalizeData(normalizedAllMessages), null, '\t'))
+        console.log(JSON.stringify(normalizedAllMessages, null, 2))
         return allMessages;
     } catch (error) {
         console.log(error)
