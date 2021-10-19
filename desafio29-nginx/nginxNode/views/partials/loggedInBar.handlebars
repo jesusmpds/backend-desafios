@@ -1,0 +1,19 @@
+<section class="row pt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-10 ">
+                    <h2 class="d-inline">Bienvenido {{loggedUsername.first_name}}</h2>
+                    <img src="{{loggedUsername.picture}}" class="d-inline rounded">
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-primary" id="logOutButton">
+                        <a href="/productos/logout" class="text-white text-decoration-none">
+                        Logout
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

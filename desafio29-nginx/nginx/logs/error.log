@@ -1,0 +1,10 @@
+2021/10/06 22:18:08 [notice] 19044#23132: signal process started
+2021/10/18 22:19:09 [notice] 20928#32184: signal process started
+2021/10/19 17:07:20 [emerg] 19796#16692: no "events" section in configuration
+2021/10/19 17:08:27 [emerg] 15188#11556: no "events" section in configuration
+2021/10/19 17:11:29 [notice] 17824#19420: signal process started
+2021/10/19 17:11:29 [error] 17824#19420: OpenEvent("Global\ngx_reload_19592") failed (2: The system cannot find the file specified)
+2021/10/19 17:11:41 [notice] 17216#20104: signal process started
+2021/10/19 17:11:41 [error] 17216#20104: OpenEvent("Global\ngx_reload_19592") failed (2: The system cannot find the file specified)
+2021/10/19 17:11:54 [notice] 10900#7364: signal process started
+2021/10/19 17:11:54 [error] 10900#7364: OpenEvent("Global\ngx_reload_19592") failed (2: The system cannot find the file specified)
