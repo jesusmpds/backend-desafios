@@ -1,0 +1,189 @@
+Statistical profiling result from v8.log, (3920 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   3836   97.9%          C:\Windows\SYSTEM32\ntdll.dll
+     77    2.0%          C:\Program Files\nodejs\node.exe
+      4    0.1%          C:\Windows\System32\KERNELBASE.dll
+      2    0.1%          C:\Windows\System32\KERNEL32.DLL
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.0%  100.0%  LazyCompile: *resolve path.js:130:10
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      1    0.0%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+      3    0.1%  300.0%  GC
+   3919  100.0%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   3836   97.9%  C:\Windows\SYSTEM32\ntdll.dll
+
+     77    2.0%  C:\Program Files\nodejs\node.exe
+     35   45.5%    C:\Program Files\nodejs\node.exe
+      9   25.7%      LazyCompile: ~wrapSafe internal/modules/cjs/loader.js:964:18
+      9  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1017:37
+      9  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      9  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      4   11.4%      LazyCompile: ~stat internal/modules/cjs/loader.js:132:14
+      2   50.0%        LazyCompile: ~tryFile internal/modules/cjs/loader.js:334:17
+      2  100.0%          LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:350:23
+      2  100.0%            LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      2   50.0%        LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      2  100.0%          LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      2  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      4   11.4%      LazyCompile: ~realpathSync fs.js:1650:22
+      4  100.0%        LazyCompile: ~toRealPath internal/modules/cjs/loader.js:343:20
+      4  100.0%          LazyCompile: ~tryFile internal/modules/cjs/loader.js:334:17
+      4  100.0%            LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:350:23
+      2    5.7%      LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:270:27
+      2  100.0%        LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:303:29
+      1   50.0%          Eval: ~<anonymous> stream.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:270:27
+      1   50.0%          Eval: ~<anonymous> internal/source_map/source_map_cache.js:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:270:27
+      2    5.7%      LazyCompile: ~FastBuffer internal/buffer.js:951:1
+      1   50.0%        LazyCompile: ~allocate buffer.js:410:18
+      1  100.0%          LazyCompile: ~allocUnsafe buffer.js:385:42
+      1  100.0%            LazyCompile: ~tryCreateBuffer fs.js:347:25
+      1   50.0%        LazyCompile: ~alloc buffer.js:372:30
+      1  100.0%          LazyCompile: ~serialize C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\bson\lib\bson.js:105:19
+      1  100.0%            LazyCompile: ~toBin C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\commands.js:82:10
+      1    2.9%      LazyCompile: ~readSync fs.js:555:18
+      1  100.0%        LazyCompile: ~tryReadSync fs.js:362:21
+      1  100.0%          LazyCompile: ~readFileSync fs.js:374:22
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      1    2.9%      LazyCompile: ~read internal/modules/package_json_reader.js:16:14
+      1  100.0%        LazyCompile: ~readPackage internal/modules/cjs/loader.js:240:21
+      1  100.0%          LazyCompile: ~resolveExports internal/modules/cjs/loader.js:422:24
+      1  100.0%            LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      1    2.9%      LazyCompile: ~pbkdf2Sync internal/crypto/pbkdf2.js:44:20
+      1  100.0%        LazyCompile: ~HI C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\auth\scram.js:227:12
+      1  100.0%          LazyCompile: ~continueScramConversation C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\auth\scram.js:93:35
+      1  100.0%            LazyCompile: ~<anonymous> C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\auth\scram.js:85:75
+      1    2.9%      LazyCompile: ~openSync fs.js:467:18
+      1  100.0%        LazyCompile: ~readFileSync fs.js:374:22
+      1  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1    2.9%      LazyCompile: ~module.exports C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\qs\lib\parse.js:222:27
+      1  100.0%        LazyCompile: ~parseExtendedQueryString C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\express\lib\utils.js:291:34
+      1  100.0%          LazyCompile: ~query C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\express\lib\middleware\query.js:39:24
+      1  100.0%            LazyCompile: ~handle C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\express\lib\router\layer.js:86:49
+      1    2.9%      LazyCompile: ~internalBinding internal/bootstrap/loaders.js:137:45
+      1  100.0%        Eval: ~<anonymous> crypto.js:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:270:27
+      1  100.0%            LazyCompile: ~compileForPublicLoader internal/bootstrap/loaders.js:219:25
+      1    2.9%      LazyCompile: ~findLongestRegisteredExtension internal/modules/cjs/loader.js:363:40
+      1  100.0%        LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:944:36
+      1    2.9%      LazyCompile: ~createSecureContext _tls_common.js:94:59
+      1  100.0%        LazyCompile: ~connect _tls_wrap.js:1556:35
+      1  100.0%          LazyCompile: ~makeConnection C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\connect.js:227:24
+      1  100.0%            LazyCompile: ~connect C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\connect.js:15:17
+      1    2.9%      LazyCompile: ~createGlobalConsole internal/bootstrap/node.js:317:29
+      1  100.0%        Eval: ~<anonymous> internal/bootstrap/node.js:1:1
+      1    2.9%      LazyCompile: ~Socket._destroy net.js:653:37
+      1  100.0%        LazyCompile: ~destroy internal/streams/destroy.js:5:17
+      1  100.0%          LazyCompile: ~afterShutdown net.js:428:23
+      1    2.9%      LazyCompile: ~Resolver internal/dns/utils.js:38:14
+      1  100.0%        Eval: ~<anonymous> internal/dns/utils.js:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader internal/bootstrap/loaders.js:270:27
+      1  100.0%            LazyCompile: ~nativeModuleRequire internal/bootstrap/loaders.js:303:29
+      1    2.9%      LazyCompile: ~<anonymous> C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongoose\lib\connection.js:558:18
+      1  100.0%        LazyCompile: ~<anonymous> C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongoose\lib\model.js:1351:52
+      1  100.0%          LazyCompile: ~promiseOrCallback C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongoose\lib\helpers\promiseOrCallback.js:8:44
+      1  100.0%            LazyCompile: ~Mongoose._promiseOrCallback C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongoose\lib\index.js:1150:49
+      1    2.9%      Eval: ~<anonymous> C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\normalizr\dist\normalizr.js:1:1
+      1  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1017:37
+      1  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1    2.9%      C:\Program Files\nodejs\node.exe
+      1  100.0%        LazyCompile: ~readPackage internal/modules/cjs/loader.js:240:21
+      1  100.0%          LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:271:26
+      1  100.0%            LazyCompile: ~trySelf internal/modules/cjs/loader.js:391:17
+      1    1.3%    LazyCompile: ~tryCreateBuffer fs.js:347:25
+      1  100.0%      LazyCompile: ~readFileSync fs.js:374:22
+      1  100.0%        LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      1  100.0%          LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1    1.3%    LazyCompile: ~resolveExports internal/modules/cjs/loader.js:422:24
+      1  100.0%      LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      1  100.0%        LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:944:36
+      1    1.3%    LazyCompile: ~resolve path.js:130:10
+      1  100.0%      LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      1  100.0%        LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:944:36
+      1    1.3%    LazyCompile: ~readSync fs.js:555:18
+      1  100.0%      LazyCompile: ~tryReadSync fs.js:362:21
+      1  100.0%        LazyCompile: ~readFileSync fs.js:374:22
+      1  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      1  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1    1.3%    LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:271:26
+      1  100.0%      LazyCompile: ~trySelf internal/modules/cjs/loader.js:391:17
+      1  100.0%        LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:944:36
+      1    1.3%    LazyCompile: ~readPackage internal/modules/cjs/loader.js:240:21
+      1  100.0%      LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:271:26
+      1  100.0%        LazyCompile: ~trySelf internal/modules/cjs/loader.js:391:17
+      1  100.0%          LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1    1.3%    LazyCompile: ~processTimers internal/timers.js:482:25
+      1    1.3%    LazyCompile: ~peek internal/priority_queue.js:45:7
+      1  100.0%      LazyCompile: ~processTimers internal/timers.js:482:25
+      1    1.3%    LazyCompile: ~peek internal/linkedlist.js:9:14
+      1  100.0%      LazyCompile: ~listOnTimeout internal/timers.js:502:25
+      1  100.0%        LazyCompile: ~processTimers internal/timers.js:482:25
+      1    1.3%    LazyCompile: ~handleErrorFromBinding internal/fs/utils.js:303:32
+      1  100.0%      LazyCompile: ~realpathSync fs.js:1650:22
+      1  100.0%        LazyCompile: ~toRealPath internal/modules/cjs/loader.js:343:20
+      1  100.0%          LazyCompile: ~tryFile internal/modules/cjs/loader.js:334:17
+      1  100.0%            LazyCompile: ~tryExtensions internal/modules/cjs/loader.js:350:23
+      1    1.3%    LazyCompile: ~getOptionValue internal/options.js:8:24
+      1  100.0%      LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1017:37
+      1  100.0%        LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+      1  100.0%          LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1  100.0%            LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1    1.3%    LazyCompile: ~emit events.js:264:44
+      1  100.0%      LazyCompile: ~messageHandler C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\connection.js:421:35
+      1  100.0%        LazyCompile: ~emit events.js:264:44
+      1  100.0%          LazyCompile: ~processIncomingData C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\message_stream.js:79:29
+      1  100.0%            LazyCompile: ~_write C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\cmap\message_stream.js:26:11
+      1    1.3%    LazyCompile: ~TopologyDescription C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\sdam\topology_description.js:28:16
+      1  100.0%      LazyCompile: ~update C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\sdam\topology_description.js:120:11
+      1  100.0%        LazyCompile: ~serverUpdateHandler C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\sdam\topology.js:379:24
+      1  100.0%          LazyCompile: ~<anonymous> C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongodb\lib\sdam\topology.js:552:53
+      1  100.0%            LazyCompile: ~emit events.js:264:44
+      1    1.3%    LazyCompile: ~ObjectId C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\bson\lib\objectid.js:22:22
+      1  100.0%      LazyCompile: *deserializeObject C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\bson\lib\parser\deserializer.js:53:27
+      1  100.0%        LazyCompile: *deserializeObject C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\bson\lib\parser\deserializer.js:53:27
+      1  100.0%          LazyCompile: ~deserialize C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\bson\lib\parser\deserializer.js:24:21
+      1  100.0%            LazyCompile: ~deserialize C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\bson\lib\bson.js:156:21
+      1    1.3%    LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1  100.0%      LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1  100.0%        LazyCompile: ~Module.require internal/modules/cjs/loader.js:944:36
+      1  100.0%          LazyCompile: ~require internal/modules/cjs/helpers.js:87:31
+      1  100.0%            Eval: ~<anonymous> C:\Users\jesus\Documents\coderhouse\backend\desafio31-profiling\node_modules\mongoose\lib\helpers\populate\createPopulateQueryFilter.js:1:1
+      1    1.3%    LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:444:28
+      1  100.0%      LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:796:35
+      1  100.0%        LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1  100.0%          LazyCompile: ~Module.require internal/modules/cjs/loader.js:944:36
+      1  100.0%            LazyCompile: ~require internal/modules/cjs/helpers.js:87:31
+
