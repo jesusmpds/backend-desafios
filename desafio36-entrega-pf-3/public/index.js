@@ -71,6 +71,7 @@ if (/\/(productos).*/.test(urlPath)) {
           .then((data) => {
             console.log(data);
             localStorage.setItem("carrito", JSON.stringify(data));
+            Swal.fire("Genial", "Producto añadido correctamente", "success");
           });
       } else {
         console.log("PUT");
@@ -85,6 +86,7 @@ if (/\/(productos).*/.test(urlPath)) {
         })
           .then((res) => res.json())
           .then((data) => console.log(data));
+        Swal.fire("Genial", "Producto añadido correctamente", "success");
       }
     }
   };
@@ -253,6 +255,7 @@ if (/\/(productos)|(perfil)|(carrito).*/.test(urlPath)) {
       await fetch("/api/carrito/borrar", {
         method: "DELETE",
       }).then((res) => (window.location.href = "/carrito"));
+      localStorage.removeItem("carrito");
     }
 
     if (event.target.id === "checkOut") {
@@ -261,6 +264,7 @@ if (/\/(productos)|(perfil)|(carrito).*/.test(urlPath)) {
         method: "POST",
         body: JSON.stringify(productosSorage),
       }).then((res) => (window.location.href = "/carrito"));
+      localStorage.removeItem("carrito");
     }
   };
 

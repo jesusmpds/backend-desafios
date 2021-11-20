@@ -15,7 +15,7 @@ exports.sendSMS = async (smsContent) => {
 
 exports.sendWhatsApp = async (whatsAppContent) => {
   try {
-    await client.messages.create({
+    await twilioClient.messages.create({
       body: whatsAppContent,
       from: "whatsapp:+14155238886",
       to: "whatsapp:+5491127531612",
