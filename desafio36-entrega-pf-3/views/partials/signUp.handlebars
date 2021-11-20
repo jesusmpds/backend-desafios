@@ -1,0 +1,47 @@
+<section class="row pt-4">
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="row">
+                <h1>Registro de usuario</h1>
+                <form action="/signup" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <label for="userNameLogIn" class="form-label mt-4"> Añade tu email</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="Username" name="email" autocomplete="username" placeholder="email@example.com" required>
+                            
+                            <label for="nameLogIn" class="form-label mt-4"> Añade tu nombre </label>
+                                <input type="text" class="form-control" id="firstName" aria-describedby="Name" name="firstName" placeholder="Jesus">
+
+                            <label for="lastName" class="form-label mt-4"  >Añade tu apellido</label>
+                                <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Perez">
+
+                            <label for="userAge" class="form-label mt-4"  >Añade tu edad</label>
+                                <input type="text" name="age" id="userAge" class="form-control" placeholder="22">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="phone"  class="form-label mt-4">Añade tu número de teléfono</label>
+                                <input type="tel"  class="form-control" id="phone" name="phone" placeholder="+54 9 11 27541612" required>
+                            <label for="userAddress" class="form-label mt-4"  >Añade tu direccion</label>
+                                <input type="text" name="address" id="address" class="form-control" placeholder="Jeronimo Salguero 1175, Buenos Aires">
+                            
+                            <label for="passwordlogin" class="form-label mt-4 d-block"> Añada su contraseña </label>
+                                <input type="password" class="form-control" id="passwordSignUp" aria-describedby="Password" name="password" autocomplete="new-password">
+                            <label for="userAvatar" class="form-label mt-4 d-block">Añade tu avatar o foto de perfil</label>
+                                <input type="file" name="avatarFile" id="userAvatar" class="form-control-file d-block">
+                                <small>Nota: Imagen de 50px por 50 px recomendada</small>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-4">
+                        Registrarse
+                    </button>
+                    <div class="mt-4">
+                        <a href="/login" class="text-decoration-none mt-4">
+                            Iniciar sesion
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
