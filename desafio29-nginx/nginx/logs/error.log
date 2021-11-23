@@ -8,3 +8,5 @@
 2021/10/19 17:11:41 [error] 17216#20104: OpenEvent("Global\ngx_reload_19592") failed (2: The system cannot find the file specified)
 2021/10/19 17:11:54 [notice] 10900#7364: signal process started
 2021/10/19 17:11:54 [error] 10900#7364: OpenEvent("Global\ngx_reload_19592") failed (2: The system cannot find the file specified)
+2021/10/19 17:18:48 [error] 8632#17732: *1 CreateFile() "C:\Users\jesus\Documents\coderhouse\backend\desafio29-nginx\nginx/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: coderhouse_app, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2021/10/21 22:41:41 [notice] 23636#16088: signal process started
