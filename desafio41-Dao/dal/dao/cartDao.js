@@ -1,15 +1,17 @@
 const logger = require("../../services/loggerService");
-
+const { cartDTO } = require("../dto/cart.dto");
 module.exports = class {
   constructor(model) {
     this.model = model;
   }
   async getAllCartItems(userId) {
     try {
-      return this.model
+      const allItems = await this.model
         .findOne({ userId })
-        .populate(["products", "user"])
+        .populate(["products"])
         .lean();
+
+      return cartDTO(allItems);
     } catch (error) {
       logger.error(error);
     }

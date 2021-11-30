@@ -3,7 +3,8 @@ const logger = require("./loggerService");
 
 exports.getAllCartItems = async (userId) => {
   try {
-    return cartDao.getAllCartItems(userId);
+    const cart = await cartDao.getAllCartItems(userId);
+    return cart;
   } catch (error) {
     logger.error(error);
   }
@@ -12,7 +13,6 @@ exports.getAllCartItems = async (userId) => {
 exports.addCart = async (cart) => {
   try {
     const newCart = await cartDao.addCart(cart);
-    await newCart.populate(["products", "user"]);
     return newCart;
   } catch (error) {
     logger.error(error);

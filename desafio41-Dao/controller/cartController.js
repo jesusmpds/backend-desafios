@@ -8,7 +8,6 @@ exports.getCartByUserId = async (req, res, next) => {
   try {
     const { _id } = req.user;
     const shoppingCart = await cartService.getAllCartItems(_id);
-    console.log(shoppingCart);
     return shoppingCart;
   } catch (error) {
     logger.error(error);

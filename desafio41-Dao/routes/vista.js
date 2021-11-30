@@ -89,7 +89,7 @@ Vistas.get("/carrito", isAuthenticated, async (req, res) => {
       return;
     }
     res.render("pages/carrito", {
-      listaDeProductosEnCarro: listaDeProductosEnCarro.products,
+      listaDeProductosEnCarro,
       userInfo,
     });
     return;
