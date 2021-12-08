@@ -1,0 +1,104 @@
+<section class="position-fixed bottom-0 end-0 shadow h-50%" height="500px">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12">
+
+      <!-- Buttons trigger collapse -->
+      <a
+        class="btn btn-dark btn-lg btn-block w-100 rounded-top"
+        data-bs-toggle="collapse"
+        href="#collapseExample"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Chatea con nosotros</span>
+        </div>
+      </a>
+
+      <!-- Collapsed content -->
+      <div class="collapse" id="collapseExample">
+        <div class="card rounded-0 bg-secondary bg-gradient text-white">
+          <div class="card-body">
+            <div class="d-flex flex-row mt-2 justify-content-center">
+              <div class="image mr-3">
+                <img
+                  id="userAvatar"
+                  src="{{userInfo.avatarUrl}}"
+                  class="rounded-circle"
+                  width="60"
+                  height="60"
+                />
+                <p id="userAge" class="text-center">
+                  {{#if userInfo.age}}
+                    {{userInfo.age}}
+                    años
+                  {{/if}}
+                </p>
+              </div>
+              <div class="">
+                <div class="d-flex flex-column mx-3">
+                  <p id="firstName">{{userInfo.first_name}}
+                    <span id="lastName">{{userInfo.last_name}}</span></p>
+                  <p id="emailChat">{{userInfo.email}}</p>
+                </div>
+                <div class="mx-3">
+                  <a class="btn btn-dark btn-sm" href="/perfil">Ver Perfil</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="card rounded-0" id="chat4">
+          <div
+            class="card-body overflow-auto position-relative"
+            style="height: 300px"
+          >
+            <div
+              id="messagesContainer"
+              class="d-flex flex-column justify-content-start"
+            >
+              {{#each chat}}
+                <img
+                  src="{{userInfo.avatarUrl}}"
+                  class="rounded-circle"
+                  alt="Avatar del usuario"
+                  style="width: 45px; height: 45px;"
+                />
+                <span class="badge bg-dark">{{msg.author.name}}</span>
+                <div>
+                  <p
+                    class="small p-2 ms-3 mb-1 rounded-3"
+                    style="background-color: #f5f6f7;"
+                  >Hi</p>
+                  <p
+                    class="small me-3 mb-3 rounded-3 text-muted d-flex justify-content-end"
+                  >00:06</p>
+                </div>
+              {{/each}}
+
+            </div>
+
+          </div>
+          <div
+            class="card-footer text-muted d-flex justify-content-start align-items-center p-3"
+          >
+            <input
+              type="text"
+              class="form-control"
+              id="messageChat"
+              placeholder="Escribe tu mensaje"
+            />
+            <button
+              type="button"
+              id="buttonSendMessage"
+              class="ms-3 btn btn-primary"
+            >➽</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
