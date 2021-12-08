@@ -37,9 +37,9 @@ const updateProduct = async ({ _id, inputs }) => {
   }
 };
 
-const deleteProduct = async (root, args, context, info) => {
+const deleteProduct = async ({ _id }) => {
   try {
-    const productDeleted = await productsService.deleteProduct(req.params.id);
+    const productDeleted = await productsService.deleteProduct(_id);
     res.json(productDeleted);
   } catch (error) {
     console.log(error);
