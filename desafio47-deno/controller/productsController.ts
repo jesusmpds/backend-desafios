@@ -51,60 +51,68 @@ export default {
     }
   },
 
-  // async getOne(req: ServerRequest) {
-  //   const [_, id] = req.match;
-  //   const product = await productService.getOne(id);
-  //   if (product) {
-  //     req.respond({
-  //       status: 200,
-  //       body: JSON.stringify(product),
-  //     });
-  //   } else {
-  //     req.respond({
-  //       status: 404,
+  getOne(req: ServerRequest) {
+    const [_, id] = req.match;
+    const product = productService.getOne(id);
+    if (product) {
+      req.respond({
+        status: 200,
+        body: JSON.stringify(product),
+      });
+    } else {
+      req.respond({
+        status: 404,
 
-  //       body: "Product not found with that id",
-  //     });
-  //   }
-  // },
+        body: "Product not found with that id",
+      });
+    }
+  },
 
-  // async update(req) {
-  //   try {
-  //     const body = await req.json();
-  //     const { id } = ctx.params;
-  //     const updatedProduct = await productService.update(id, body);
-  //     if (updatedProduct) {
-  //       ctx.response.status = 200;
-  //       ctx.body = updatedProduct;
-  //     } else {
-  //       ctx.response.status = 400;
-  //       ctx.body = {
-  //         status: "error",
-  //         message: "Product not found with that id",
-  //       };
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     ctx.throw(500, error);
-  //   }
-  // },
-  // async delete(req: ServerRequest) {
-  //   try {
-  //     const { id } = ctx.params;
-  //     const product = await productService.delete(id);
-  //     if (product) {
-  //       ctx.response.status = 200;
-  //       ctx.body = product;
-  //     } else {
-  //       ctx.response.status = 400;
-  //       ctx.body = {
-  //         status: "error",
-  //         message: "Product not found with that id",
-  //       };
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     ctx.throw(500, error);
-  //   }
-  // },
+  async update(req: ServerRequest) {
+    try {
+      const body = (await req.json()) as PostPayload;
+      const [_, id] = req.match;
+      const updatedProduct = await productService.update(id, body);
+      if (updatedProduct) {
+        req.respond({
+          status: 200,
+          body: JSON.stringify(updatedProduct),
+        });
+      } else {
+        req.respond({
+          status: 404,
+
+          body: "Product not found with that id",
+        });
+      }
+    } catch (error) {
+      req.respond({
+        status: 500,
+        body: error,
+      });
+    }
+  },
+  async delete(req: ServerRequest) {
+    try {
+      const [_, id] = req.match;
+      const product = await productService.delete(id);
+      if (product) {
+        req.respond({
+          status: 200,
+          body: JSON.stringify(product),
+        });
+      } else {
+        req.respond({
+          status: 404,
+
+          body: "Product not found with that id",
+        });
+      }
+    } catch (error) {
+      req.respond({
+        status: 500,
+        body: error,
+      });
+    }
+  },
 };
