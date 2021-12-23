@@ -1,14 +1,10 @@
-## Running the app
-
-deno run --allow-net --allow-read --allow-env index.ts
-
 # RESTful API example with Deno and Servest
 
 This is an RESTfull API example with Deno and Servest.
 
 ## Usage
 
-### 1. Server start
+### Server start
 
 ```bash
 $ deno run --allow-net --allow-read --allow-env index.ts
