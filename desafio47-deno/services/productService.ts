@@ -8,16 +8,9 @@ type productType = {
 };
 
 export default class {
-  db: Array<{
-    id: string;
-    name: string;
-    description: string;
-    code: string;
-    price: string;
-    stock: string;
-  }> = [];
+  db: Array<productType> = [];
 
-  create(product: Record<string, string>) {
+  create(product: productType) {
     const { id, name, description, code, price, stock } = product;
     const nuevoProducto = {
       id: id,
